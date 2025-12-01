@@ -13,17 +13,14 @@
             padding: 0;
             box-sizing: border-box;
         }
-
     ul {
     list-style-type: none;
     margin: 0px;
     padding: 5px;
     overflow: hidden;
     top: 0;}
-
     ul li {
     float: left;}
-
     ul li a {
     color: #f946a4;
     padding: 15px 17px;
@@ -32,17 +29,14 @@
     font-size: 30px;
     text-align: center;
     text-decoration: none;
-	background-color: white;}
-
+    background-color: white;}
     ul li a:hover:not(.active) {
     background-color: #b7e022;
-	color: #0b92ce;}
-
+    color: #0b92ce;}
     ul li a.active {
     color: white;
     background-color: #f946a4;
-	text-shadow: 2px 2px black;}
-
+    text-shadow: 2px 2px black;}
         body {
             background-image: url("imagens/bckgrd_pattern.jpg");
             min-height: 40px;
@@ -52,41 +46,53 @@
             justify-content: center;
             padding: 20px;
         }
-
         h1 {
-            margin: 20px;}
-		
-		p {
-			color: white;
-			font-family: "lexend", sans-serif;
-			font-size: 40px;}
-		
-		.text-container{
-			background-color: rgba(255,255,255, 0.10);
-            padding: 40px;
-            border-radius: 15px;
-            max-width: 800px;
+            margin: 5px;}
+        
+        p {
+            color: #f946a4;
+            font-family: "lexend", sans-serif;
+            font-size: 30px;}
+        
+        /* Novo container para os dois elementos lado a lado */
+        .containers-wrapper {
+            display: flex;
+            gap: 20px;
+            max-width: 1900px;
             margin: 20px auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .text-container{
+            background-color: rgba(255,255,255, 0.9);
+            padding: 10px;
+            border-radius: 15px;
+            max-width: 1000px;
+            margin: 0;
             text-align: center;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-		}
-
+        }
        
     </style>
 </head>
 <body>
-
     <ul> 
             <li><a href="index.html">Convite</a></li>
-            <li><a href="balako_galeria.html">Memórias</a></li>
-            <li><a class="active" href="coisas.html">Sobre</a></li>
+            <li><a href="balako_galeria.html">Álbum de fotos</a></li>
+            <li><a class="active" href="coisas.html">Projeto</a></li>
             <li><a href="amaevinhos.html">Adoção</a></li>
         </ul>
+    <h1><img src="imagens/logo_balako.png" width="300px" height="auto" > </h1>
+    
+    <div class="containers-wrapper">
+        <div class="text-container" >
+            <p> “BalakoBako” nasce da vontade de inovar o formato de vendas e distribuição de músicas no Brasil, resgatando a essência do objeto físico como um elemento de conexão genuína entre artista e fãs. Inspirado no mercado de K-pop, reconhecido por transformar o produto musical em uma experiência imersiva e afetiva, o projeto busca aproximar os fãs oferecendo algo além do simples conteúdo sonoro.
 
-    <h1><img src="imagens/logo_balako.png" width="500px" height="auto" > </h1>
-	
-	<div class="text-container" >
-	<p> Balako bako surgiu da vontade de três amigas em trazer uma nova experiência aos álbuns de música brasileira. 
-	</p></div>
+Para fundamentar o projeto, realizamos um estudo inicial da indústria musical e seu contexto histórico, explorando tendências contemporâneas como a alta do colecionismo, o retorno da estética Y2K e a cultura de fãl no K-pop. A pesquisa também se debruçou sobre referências visuais e materiais presentes nos álbuns físicos sul-coreanos e nos objetos culturais icônicos dos anos 2000, buscando compreender como esses elementos constroem experiências memoráveis e fortalecem o vínculo afetivo entre público e artista.
+            </p>
+        </div>
+        </div>
+    </div>
 </body>
 </html>

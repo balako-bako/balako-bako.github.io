@@ -1,58 +1,64 @@
 <!DOCTYPE html>
-<html lang="pt-BR"><head>
+<html lang="pt-BR">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meu Álbum de Fotos Interativo</title>
-	
- <style>
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@599&family=Momo+Trust+Sans:wght@200..800&display=swap');
-</style>
-	<style>
-       * {
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@599&family=Momo+Trust+Sans:wght@200..800&display=swap');
+        
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-    ul {
-    list-style-type: none;
-    margin: 0px;
-    padding: 15px;
-    overflow: hidden;
-    padding-top: 25px;
-	display: flex;
-	justify-content: center;}
+        /* Menu de Navegação */
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 15px;
+            overflow: hidden;
+            padding-top: 25px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
 
-    ul li {
-    float: none;}
+        ul li {
+            float: none;
+        }
 
-    ul li a {
-    color: #f946a4;
-    padding: 15px 17px;
-    display: block;
-    font-family: "lexend", system-ui;
-    font-size: 30px;
-    text-align: center;
-	text-decoration: none;
-	background-color: white;}
+        ul li a {
+            color: #f946a4;
+            padding: 15px 17px;
+            display: block;
+            font-family: "lexend", system-ui;
+            font-size: 30px;
+            text-align: center;
+            text-decoration: none;
+            background-color: white;
+        }
 
-    ul li a:hover:not(.active) {
-    background-color: #b7e022;
-	color: #0b92ce;}
+        ul li a:hover:not(.active) {
+            background-color: #b7e022;
+            color: #0b92ce;
+        }
 
-    ul li a.active {
-    color: white;
-    background-color: #f946a4;
-	text-shadow: 2px 2px black;}
+        ul li a.active {
+            color: white;
+            background-color: #f946a4;
+            text-shadow: 2px 2px black;
+        }
 
         body {
             font-family: 'lexend', sans-serif;
-			font-style: normal;
+            font-style: normal;
             background-image: url(imagens/bckg_03.png);
             min-height: 100vh;
             padding: 5px;
         }
-	
 
         .container {
             max-width: 1600px;
@@ -63,13 +69,13 @@
             height: calc(100vh - 40px);
         }
 
-        /* --- Estilos do Álbum --- */
+        /* Estilos do Álbum */
         .album-section {
             background: #99dee0;
             border-radius: 15px;
             padding: 30px;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-            overflow-y: auto; /* Álbum scrollável */
+            overflow-y: auto;
         }
 
         .album-header {
@@ -77,20 +83,25 @@
             margin-bottom: 30px;
             padding-bottom: 20px;
             border-bottom: 3px solid #0b92ce;
-			color: #99dee0;
-			font-size: 20px;
+            color: #99dee0;
+            font-size: 20px;
         }
-		
-		.album-header p {
+        
+        .album-header p {
             color: black;
             font-size: 20px;
             margin-bottom: 10px;
         }
 
-		.album-header h1{
+        .album-header h1 {
             color: black;
             font-size: 42px;
             margin-bottom: 10px;
+        }
+
+        .album-header img {
+            max-width: 100%;
+            height: auto;
         }
 
         .page-title {
@@ -99,7 +110,7 @@
             font-size: 30px;
             margin-bottom: 30px;
             font-style: none;
-			text-shadow: 2px 2px 2px #f946a4;
+            text-shadow: 2px 2px 2px #f946a4;
         }
 
         /* Paginação do Álbum */
@@ -108,6 +119,7 @@
             justify-content: center;
             gap: 15px;
             margin-top: 15px;
+            flex-wrap: wrap;
         }
 
         .nav-btn {
@@ -118,8 +130,9 @@
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
-			font-family: 'lexend', sans-serif;
-			text-shadow: 2px 2px 2px black;
+            font-family: 'lexend', sans-serif;
+            text-shadow: 2px 2px 2px black;
+            font-size: 16px;
         }
 
         .nav-btn:hover:not(:disabled) {
@@ -158,7 +171,7 @@
             background: #ff8dcc;
             border: 8px solid white;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-			border-radius: 15px;
+            border-radius: 15px;
             position: relative;
             overflow: hidden;
             cursor: pointer;
@@ -213,7 +226,7 @@
             display: block;
         }
 
-        /* --- Estilos da Galeria Lateral --- */
+        /* Estilos da Galeria Lateral */
         .gallery-section {
             background: #99dee0;
             border-radius: 15px;
@@ -245,21 +258,19 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            flex-grow: 1; /* Permite que o container se expanda e separe as coisas */
+            flex-grow: 1;
         }
 
-        /* O grid da galeria não tem scroll, os botões controlam o conteúdo */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 15px;
-            overflow: hidden; /* Esconde fotos que não estão na página atual */
+            overflow: hidden;
             height: 100%;
-            max-height: 500px; /* Altura fixa para o grid */
+            max-height: 500px;
             padding-bottom: 20px;
         }
         
-        /* Fotos da Galeria */
         .gallery-item {
             aspect-ratio: 1;
             background: #f0f0f0;
@@ -290,6 +301,7 @@
             margin-top: 15px;
             padding-top: 10px;
             border-top: 1px solid #ddd;
+            gap: 10px;
         }
         
         .gallery-nav-btn {
@@ -302,7 +314,7 @@
             font-size: 14px;
             font-family: 'lexend', sans-serif;
             transition: background 0.3s ease;
-			text-shadow: 2px 2px 2px black;
+            text-shadow: 2px 2px 2px black;
         }
 
         .gallery-nav-btn:hover:not(:disabled) {
@@ -314,13 +326,11 @@
             cursor: not-allowed;
         }
         
-        /* Estilo para itens removidos (Escondidos) */
         .gallery-item.removed {
             display: none !important;
         }
 
-
-        /* --- Estilos do Modal (Visualização Ampliada) --- */
+        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -332,10 +342,38 @@
             z-index: 1000;
             justify-content: center;
             align-items: center;
+            padding: 20px;
         }
 
         .modal.active {
             display: flex;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .modal-content img {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(244, 67, 54, 0.9);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 30px;
+            cursor: pointer;
+            z-index: 1002;
         }
 
         .modal-insert-btn {
@@ -353,27 +391,11 @@
             cursor: pointer;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             z-index: 1001;
-            /* Esconde por padrão, só aparece para fotos da Galeria */
             display: none;
         }
-		
-		.modal-insert-btn:hover:not(:disabled) {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
+        
+        .modal-insert-btn:hover {
             background: #ff8dcc;
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            border-radius: 8px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            z-index: 1001;
-            /* Esconde por padrão, só aparece para fotos da Galeria */
-            display: none;
         }
         
         /* Scrollbar customizada */
@@ -385,33 +407,219 @@
             border-radius: 10px;
         }
 
-        /* Responsividade */
+        /* RESPONSIVIDADE */
+        
+        /* Tablets e telas médias */
         @media (max-width: 1200px) {
             .container {
                 grid-template-columns: 1fr;
-                grid-template-rows: auto 1fr;
+                grid-template-rows: auto auto;
+                height: auto;
             }
 
             .gallery-section {
-                max-height: 400px;
+                max-height: 500px;
+            }
+            
+            .album-header h1 {
+                font-size: 36px;
+            }
+            
+            ul li a {
+                font-size: 24px;
+                padding: 12px 14px;
+            }
+        }
+
+        /* Smartphones */
+        @media (max-width: 768px) {
+            body {
+                padding: 2px;
+            }
+
+            ul {
+                padding: 10px 5px;
+                padding-top: 15px;
+            }
+
+            ul li a {
+                font-size: 16px;
+                padding: 10px 12px;
+            }
+
+            .container {
+                gap: 10px;
+            }
+
+            .album-section,
+            .gallery-section {
+                padding: 15px;
+                border-radius: 10px;
+            }
+
+            .album-header {
+                margin-bottom: 20px;
+                padding-bottom: 15px;
+            }
+
+            .album-header h1 {
+                font-size: 28px;
+            }
+
+            .album-header p {
+                font-size: 16px;
+            }
+
+            .album-header img {
+                height: 60px;
+            }
+
+            .page-title {
+                font-size: 22px;
+                margin-bottom: 20px;
+            }
+
+            .album-page {
+                padding: 20px;
+                min-height: 500px;
+            }
+
+            /* Grid de 1 coluna em mobile */
+            .photo-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .photo-slot {
+                border: 5px solid white;
+            }
+
+            .photo-slot.empty::before {
+                font-size: 16px;
+            }
+
+            .nav-btn {
+                padding: 8px 15px;
+                font-size: 14px;
+            }
+
+            #pageIndicator {
+                font-size: 14px;
+            }
+
+            .gallery-header h2 {
+                font-size: 22px;
+            }
+
+            .gallery-header p {
+                font-size: 13px;
+            }
+
+            .gallery-section {
+                max-height: 450px;
+            }
+
+            .gallery-grid {
+                max-height: 350px;
+            }
+
+            .gallery-nav-btn {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+
+            #galleryPageIndicator {
+                font-size: 11px;
+            }
+
+            .modal-close {
+                width: 40px;
+                height: 40px;
+                font-size: 24px;
+                top: 10px;
+                right: 10px;
+            }
+
+            .modal-insert-btn {
+                padding: 12px 30px;
+                font-size: 16px;
+                bottom: 10px;
+            }
+
+            .remove-photo {
+                width: 30px;
+                height: 30px;
+                font-size: 18px;
+                /* Sempre visível em mobile para facilitar */
+                display: block !important;
+            }
+        }
+
+        /* Smartphones pequenos */
+        @media (max-width: 480px) {
+            ul li a {
+                font-size: 14px;
+                padding: 8px 10px;
+            }
+
+            .album-header h1 {
+                font-size: 24px;
+            }
+
+            .album-header p {
+                font-size: 14px;
+            }
+
+            .page-title {
+                font-size: 20px;
+            }
+
+            .album-page {
+                padding: 15px;
+                min-height: 400px;
+            }
+
+            .photo-grid {
+                gap: 15px;
+            }
+
+            .nav-btn {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+
+            #pageIndicator {
+                font-size: 12px;
+            }
+
+            .gallery-header h2 {
+                font-size: 20px;
+            }
+
+            .gallery-header p {
+                font-size: 12px;
+            }
+
+            .modal-insert-btn {
+                padding: 10px 20px;
+                font-size: 14px;
             }
         }
     </style>
 </head>
 <body>
-
-     <ul> 
-            <li><a href="index.html">Convite</a></li>
-            <li><a class="active" href="balako_galeria.html">Memórias</a></li>
-            <li><a href="coisas.html">Coisas</a></li>
-            <li><a href="amaevinhos.html">Adoção</a></li>
-        </ul>
+    <ul> 
+        <li><a href="index.html">Convite</a></li>
+        <li><a class="active" href="balako_galeria.html">Álbum de fotos</a></li>
+        <li><a href="coisas.html">Projeto</a></li>
+        <li><a href="amaevinhos.html">Adoção</a></li>
+    </ul>
 
     <div class="container">
         <div class="album-section">
             <div class="album-header">
-              <h1><img src="imagens/blkbk_logo.png" height="100" weight="200"></h1>
-<p>Monte o álbum de memórias das Maevinhas!!</p>
+                <h1><img src="imagens/blkbk_logo.png" alt="Logo"></h1>
+                <p>Monte o álbum de memórias das Maevinhas!!</p>
                 <div class="album-navigation">
                     <button class="nav-btn" id="prevPageBtn" onclick="changeAlbumPage(-1)">← Anterior</button>
                     <span id="pageIndicator" style="align-self: center; color: white; text-shadow: 1px 2px 2px black">Página 1 de N</span>
@@ -429,8 +637,7 @@
             </div>
             
             <div class="gallery-container">
-                <div class="gallery-grid" id="galleryGrid">
-                    </div>
+                <div class="gallery-grid" id="galleryGrid"></div>
                 
                 <div class="gallery-navigation">
                     <button class="gallery-nav-btn" id="prevGalleryBtn" onclick="changeGalleryPage(-1)">← Anterior</button>
@@ -450,25 +657,18 @@
     </div>
 
     <script>
-        // ============================================
-        // CONFIGURAÇÕES E VARIÁVEIS GLOBAIS
-        // ============================================
         const TOTAL_PHOTOS = 54;
         const ALBUM_PHOTOS_PER_PAGE = 4;
-        const GALLERY_PHOTOS_PER_PAGE = 6; // 2 colunas x 3 linhas
+        const GALLERY_PHOTOS_PER_PAGE = 6;
         
         const TOTAL_ALBUM_PAGES = Math.ceil(TOTAL_PHOTOS / ALBUM_PHOTOS_PER_PAGE);
-        let TOTAL_GALLERY_PAGES = 0; // Calculado após a criação da galeria
+        let TOTAL_GALLERY_PAGES = 0;
         
         let currentAlbumPage = 0;
         let currentGalleryPage = 0;
         
         let draggedPhotoSrc = null;
-        let photoData = []; // Armazenará os dados de todas as fotos da galeria
-
-        // ============================================
-        // CRIAÇÃO DINÂMICA DO ÁLBUM E GALERIA
-        // ============================================
+        let photoData = [];
 
         function createAlbum() {
             const albumPages = document.getElementById('albumPages');
@@ -495,20 +695,16 @@
                     photoSlot.className = 'photo-slot empty';
                     photoSlot.dataset.slotId = slotIndex;
                     
-                    // Configurações de Drag and Drop
                     photoSlot.addEventListener('dragover', handleDragOver);
                     photoSlot.addEventListener('dragleave', handleDragLeave);
                     photoSlot.addEventListener('drop', handleDrop);
                     
-                    // Duplo clique para visualizar a foto já inserida
                     photoSlot.addEventListener('dblclick', function() {
                         const img = this.querySelector('img');
                         if (img) {
-                            openModal(img.src, false); // Não é da galeria, esconde o botão de inserir
+                            openModal(img.src, false);
                         }
                     });
-
-                    // Remove a opção de selecionar slot. O clique não faz nada em slots vazios.
                     
                     photoGrid.appendChild(photoSlot);
                 }
@@ -534,10 +730,6 @@
             renderGalleryPage(currentGalleryPage);
         }
 
-        // ============================================
-        // RENDERIZAÇÃO E NAVEGAÇÃO DA GALERIA
-        // ============================================
-
         function renderGalleryPage(page) {
             const galleryGrid = document.getElementById('galleryGrid');
             galleryGrid.innerHTML = '';
@@ -548,7 +740,6 @@
             const photosToShow = photoData.slice(startIndex, endIndex);
             
             photosToShow.forEach(data => {
-                // Cria apenas se não tiver sido inserida no álbum
                 if (!data.inserted) {
                     const galleryItem = document.createElement('div');
                     galleryItem.className = 'gallery-item';
@@ -560,11 +751,9 @@
                     img.alt = `Foto ${data.id}`;
                     img.dataset.photoSrc = data.src;
                     
-                    // Eventos Drag
                     galleryItem.addEventListener('dragstart', handleDragStart);
                     galleryItem.addEventListener('dragend', handleDragEnd);
                     
-                    // Duplo clique para visualizar e inserir
                     galleryItem.addEventListener('dblclick', function() {
                         openModal(data.src, true);
                     });
@@ -592,10 +781,6 @@
             document.getElementById('galleryPageIndicator').textContent = `Página ${currentGalleryPage + 1} de ${TOTAL_GALLERY_PAGES}`;
         }
 
-
-        // ============================================
-        // NAVEGAÇÃO ENTRE PÁGINAS DO ÁLBUM
-        // ============================================
         function changeAlbumPage(direction) {
             const newPage = currentAlbumPage + direction;
             
@@ -615,15 +800,12 @@
             document.getElementById('pageIndicator').textContent = `Página ${currentAlbumPage + 1} de ${TOTAL_ALBUM_PAGES}`;
         }
 
-        // ============================================
-        // DRAG AND DROP
-        // ============================================
         let draggedPhotoId = null;
 
         function handleDragStart(e) {
             this.classList.add('dragging');
             draggedPhotoSrc = this.querySelector('img').dataset.photoSrc;
-            draggedPhotoId = this.id; // Armazena o ID da foto da galeria
+            draggedPhotoId = this.id;
             e.dataTransfer.effectAllowed = 'copy';
         }
 
@@ -655,15 +837,12 @@
             draggedPhotoId = null;
         }
 
-        // ============================================
-        // INSERÇÃO E REMOÇÃO DE FOTOS NO ÁLBUM
-        // ============================================
         function insertPhoto(slotId, photoSrc, photoId) {
             const slot = document.querySelector(`[data-slot-id="${slotId}"]`);
             
             slot.innerHTML = '';
             slot.classList.remove('empty');
-            slot.dataset.photoId = photoId; // Armazena o ID da foto inserida
+            slot.dataset.photoId = photoId;
 
             const img = document.createElement('img');
             img.src = photoSrc;
@@ -681,19 +860,17 @@
             slot.appendChild(img);
             slot.appendChild(removeBtn);
             
-            // 1. Remove a foto da lista de dados e renderiza a galeria
             markPhotoAsInserted(photoId, true);
         }
 
         function removePhoto(slotId) {
             const slot = document.querySelector(`[data-slot-id="${slotId}"]`);
-            const photoId = slot.dataset.photoId; // Pega o ID da foto a ser removida
+            const photoId = slot.dataset.photoId;
 
             slot.innerHTML = '';
             slot.classList.add('empty');
             delete slot.dataset.photoId;
             
-            // 2. Marca a foto como não inserida e renderiza a galeria
             markPhotoAsInserted(photoId, false);
         }
 
@@ -701,14 +878,10 @@
             const index = photoData.findIndex(d => d.id === photoId);
             if (index !== -1) {
                 photoData[index].inserted = insertedStatus;
-                // Força a re-renderização da página atual da galeria
                 renderGalleryPage(currentGalleryPage); 
             }
         }
 
-        // ============================================
-        // MODAL DE VISUALIZAÇÃO
-        // ============================================
         let currentModalImageSrc = null;
 
         function openModal(imageSrc, isGalleryPhoto) {
@@ -719,7 +892,6 @@
             modalImg.src = imageSrc;
             currentModalImageSrc = imageSrc;
             
-            // Só mostra o botão de inserir se a foto vier da galeria
             insertBtn.style.display = isGalleryPhoto ? 'block' : 'none'; 
 
             modal.classList.add('active');
@@ -731,7 +903,6 @@
         }
 
         function findFirstEmptySlotOnPage() {
-            // Pega todos os slots na página ativa do álbum
             const activePage = document.getElementById(`page-${currentAlbumPage}`);
             if (!activePage) return null;
 
@@ -748,7 +919,6 @@
             }
             
             if (currentModalImageSrc) {
-                // Encontra o ID da foto atual no modal para removê-la da galeria
                 const photoDataEntry = photoData.find(d => d.src === currentModalImageSrc);
                 const photoId = photoDataEntry ? photoDataEntry.id : null;
 
@@ -761,14 +931,10 @@
             }
         }
 
-        // ============================================
-        // EVENTOS GLOBAIS
-        // ============================================
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') closeModal();
         });
 
-        // Navegação de páginas do álbum com setas do teclado
         document.addEventListener('keydown', (e) => {
             if (document.getElementById('modal').classList.contains('active')) return;
 
@@ -776,9 +942,6 @@
             if (e.key === 'ArrowLeft') changeAlbumPage(-1);
         });
 
-        // ============================================
-        // INICIALIZAÇÃO
-        // ============================================
         window.addEventListener('load', () => {
             createAlbum();
             createGallery();
