@@ -27,6 +27,8 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             z-index: 1000;
         }
 
@@ -69,13 +71,6 @@
             --radius: 24px;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Lexend', sans-serif;
-        }
-
         body {
             background-image: url('./imagens/backg_07.jpg');
             background-size: cover; 
@@ -86,6 +81,7 @@
             min-height: 100vh;
             color: var(--text-dark);
             padding: 90px 20px 20px 20px;
+            font-family: 'Lexend', sans-serif;
         }
         
         .app-container {
@@ -339,7 +335,7 @@
 
     </div>
 
-    <script>
+     <script>
         // ==========================================
         // CONFIGURAÇÃO DOS DADOS
         // ==========================================
@@ -354,7 +350,7 @@
                 color: "#f8bcd6", 
                 vibe: "Glitter Ambulante",
                 desc: "A Kitty explode energia. Super alegre, super animada e fã número 1 dos próprios interesses. Adora toque físico, abraços e conversar até virar madrugada. Cosplayer dedicada e apaixonada por T-pop, ela é o tipo de amiga que transforma qualquer conversa numa montanha-russa emotiva.",
-                image: "imagens/kitty.png"
+                image: "img/kitty.png"
             },
             {
                 id: 1,
@@ -362,7 +358,7 @@
                 color: "#7d5980", 
                 vibe: "Emo Cansada",
                 desc: "Xofa começa tímida, mas quando o papo vira anime, j-rock ou cosplay… acabou, ela fala MESMO. Observadora, meio misteriosa e totalmente acolhedora quando pega intimidade. Parece quietinha (e é) mas tem um humor ácido escondido no bolso.",
-                image: "imagens/xofa.png"
+                image: "img/xofa.png"
             },
             {
                 id: 2,
@@ -370,7 +366,7 @@
                 color: "#c8a1cb", 
                 vibe: "Diva-Caos",
                 desc: "Mianna é pura performance. Ama dançar, ama rir, ama causar. É femme fatale, mas só até te dar um sorrisão que desmonta tudo. Ri tão forte que cai no chão e te puxa junto. A amiga que mete medo e amor ao mesmo tempo — combo perfeito.",
-                image: "imagens/mianna.png"
+                image: "img/mianna.png"
             },
             {
                 id: 3,
@@ -378,7 +374,7 @@
                 color: "#f282aa", 
                 vibe: "Mascote",
                 desc: "Mai é doce, fofa e um pouquinho perdida, do tipo que chega sorrindo antes mesmo de entender o que tá acontecendo. Ela sente tudo com intensidade: é bem emotiva, chorona às vezes, mas de um jeito que só aumenta o carinho que as pessoas têm por ela. Sua presença deixa qualquer ambiente mais leve.",
-                image: "imagens/mai.png"
+                image: "img/mai.png"
             },
             {
                 id: 4,
@@ -386,72 +382,72 @@
                 color: "#f48fae",
                 vibe: "Desastre Responsável",
                 desc: "Yori é atrapalhada, gentil e cheia de doçura, mas vira adulta funcional no exato momento em que alguém precisa dela. Ama gatos, caos leve e também performances, qualquer oportunidade vira palco pra ela se expressar. Mesmo assim, mantém aquele jeitinho engraçado que conquista todo mundo.",
-                image: "imagens/yori.png"
+                image: "img/yori.png"
             },
             {
                 id: 5,
                 name: "Elly",
                 color: "#ef5c23", 
                 vibe: "Palhaça ",
-                desc: "Elly é calma, organizada e carrega uma vibe acolhedora de "vó moderna", sempre pronta pra dar conselho, bronca e colo no mesmo fôlego. Além disso, é naturalmente bem brincalhona, trazendo leveza e boas risadas pro grupo. Obcecada por Fórmula 1, é o tipo de pessoa que segura todo mundo sem nunca perder o humor.",
-                image: "imagens/elly.png"
+                desc: "Elly é calma, organizada e carrega uma vibe acolhedora de “vó moderna”, sempre pronta pra dar conselho, bronca e colo no mesmo fôlego. Além disso, é naturalmente bem brincalhona, trazendo leveza e boas risadas pro grupo. Obcecada por Fórmula 1, é o tipo de pessoa que segura todo mundo sem nunca perder o humor.",
+                image: "img/elly.png"
             }
         ];
 
-        const questionsData = [
-            {
-                question: "Como você se comporta quando chega num rolê novo?",
-                answers: [
-                    { text: "Já chego puxando assunto com geral", targets: [0, 2] }, // Kitty, Mianna
-                    { text: "Fico no meu canto observando o clima", targets: [1] }, // Xofa
-                    { text: "Vou seguindo o grupo até entender o ambiente", targets: [4] }, // Yori
-                    { text: "Me perco um pouco, mas continuo sorrindo", targets: [3] }, // Mai
-                    { text: "Assumo o controle e deixo tudo organizado", targets: [5] } // Elly
-                ]
-            },
-            {
-                question: "Qual é o seu jeitinho de demonstrar carinho?",
-                answers: [
-                    { text: "Abraço forte e sem aviso", targets: [0] }, // Kitty
-                    { text: "Ficar pertinho em silêncio confortável", targets: [1] }, // Xofa
-                    { text: "Dançar, brincar e espalhar energia boa", targets: [2] }, // Mianna
-                    { text: "Sorrisinhos tímidos e pequenos mimos", targets: [3] }, // Mai
-                    { text: "Ajudar, organizar e resolver o que precisarem", targets: [4, 5] } // Yori, Elly
-                ]
-            },
-            {
-                question: "O que você escolheria pra um dia perfeito?",
-                answers: [
-                    { text: "Montar cosplay ou conversar sobre minhas obsessões", targets: [0, 1] }, // Kitty, Xofa
-                    { text: "Colocar música e dançar sem parar", targets: [2] }, // Mianna
-                    { text: "Deitar com gatos e curtir o sossego", targets: [4] }, // Yori
-                    { text: "Passear comprando coisas fofas", targets: [3] }, // Mai
-                    { text: "Ver F1, arrumar tudo e ficar perfumada", targets: [5] } // Elly
-                ]
-            },
-            {
-                question: "Qual vibe combina mais com você?",
-                answers: [
-                    { text: "Energia brilhante e caótica", targets: [0] }, // Kitty
-                    { text: "Introspectiva com toque alternativo", targets: [1] }, // Xofa
-                    { text: "Caos divertido com presença marcante", targets: [2] }, // Mianna
-                    { text: "Mascote fofa e cheia de ternura", targets: [3] }, // Mai
-                    { text: "Responsável, mas toda estabanada", targets: [4] }, // Yori
-                    { text: "Vibe acolhedora de vó moderna", targets: [5] } // Elly
-                ]
-            },
-            {
-                question: "Quando você começa a rir…",
-                answers: [
-                    { text: "Desabo de tanto rir, sem controle nenhum", targets: [2] }, // Mianna
-                    { text: "Dou risada alta e já abraço alguém", targets: [0] }, // Kitty
-                    { text: "Solto uns 'kkk' tímidos", targets: [1] }, // Xofa
-                    { text: "Rio antes mesmo de entender a piada", targets: [3] }, // Mai
-                    { text: "Dou uma risada boba e quentinha", targets: [4] }, // Yori
-                    { text: "Rio de um jeito elegante, mas genuíno", targets: [5] } // Elly
-                ]
-            }
-        ];
+            const questionsData = [
+    {
+        question: "Como você se comporta quando chega num rolê novo?",
+        answers: [
+            { text: "Já chego puxando assunto com geral", targets: [0, 2] }, // Kitty, Mianna
+            { text: "Fico no meu canto observando o clima", targets: [1] }, // Xofa
+            { text: "Vou seguindo o grupo até entender o ambiente", targets: [4] }, // Yori
+            { text: "Me perco um pouco, mas continuo sorrindo", targets: [3] }, // Mai
+            { text: "Assumo o controle e deixo tudo organizado", targets: [5] } // Elly
+        ]
+    },
+    {
+        question: "Qual é o seu jeitinho de demonstrar carinho?",
+        answers: [
+            { text: "Abraço forte e sem aviso", targets: [0] }, // Kitty
+            { text: "Ficar pertinho em silêncio confortável", targets: [1] }, // Xofa
+            { text: "Dançar, brincar e espalhar energia boa", targets: [2] }, // Mianna
+            { text: "Sorrisinhos tímidos e pequenos mimos", targets: [3] }, // Mai
+            { text: "Ajudar, organizar e resolver o que precisarem", targets: [4, 5] } // Yori, Elly
+        ]
+    },
+    {
+        question: "O que você escolheria pra um dia perfeito?",
+        answers: [
+            { text: "Montar cosplay ou conversar sobre minhas obsessões", targets: [0, 1] }, // Kitty, Xofa
+            { text: "Colocar música e dançar sem parar", targets: [2] }, // Mianna
+            { text: "Deitar com gatos e curtir o sossego", targets: [4] }, // Yori
+            { text: "Passear comprando coisas fofas", targets: [3] }, // Mai
+            { text: "Ver F1, arrumar tudo e ficar perfumada", targets: [5] } // Elly
+        ]
+    },
+    {
+        question: "Qual vibe combina mais com você?",
+        answers: [
+            { text: "Energia brilhante e caótica", targets: [0] }, // Kitty
+            { text: "Introspectiva com toque alternativo", targets: [1] }, // Xofa
+            { text: "Caos divertido com presença marcante", targets: [2] }, // Mianna
+            { text: "Mascote fofa e cheia de ternura", targets: [3] }, // Mai
+            { text: "Responsável, mas toda estabanada", targets: [4] }, // Yori
+            { text: "Vibe acolhedora de vó moderna", targets: [5] } // Elly
+        ]
+    },
+    {
+        question: "Quando você começa a rir…",
+        answers: [
+            { text: "Desabo de tanto rir, sem controle nenhum", targets: [2] }, // Mianna
+            { text: "Dou risada alta e já abraço alguém", targets: [0] }, // Kitty
+            { text: "Solto uns ‘kkk’ tímidos", targets: [1] }, // Xofa
+            { text: "Rio antes mesmo de entender a piada", targets: [3] }, // Mai
+            { text: "Dou uma risada boba e quentinha", targets: [4] }, // Yori
+            { text: "Rio de um jeito elegante, mas genuíno", targets: [5] } // Elly
+        ]
+    }
+];
 
 
         // ==========================================
